@@ -85,6 +85,7 @@
 
         <form id="support-form" class="contact-form" method="post" target="support-submit-frame" novalidate>
           <input type="hidden" name="source" value="abidebible.app/support">
+          <input type="hidden" id="support-request-token" name="requestToken" value="">
           <div class="hp-field" aria-hidden="true">
             <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
           </div>
@@ -166,6 +167,7 @@
   const statusBox = document.getElementById('form-status');
   const message = document.getElementById('support-message');
   const messageCount = document.getElementById('message-count');
+  const requestTokenInput = document.getElementById('support-request-token');
   let awaitingResponse = false;
   let fallbackTimer = null;
 
@@ -182,8 +184,23 @@
   }
 
   function isAppsScriptOrigin(origin) {
-    return origin === 'https://script.google.com' ||
-      origin === 'https://script.googleusercontent.com';
+    if (!origin) return false;
+    try {
+      const url = new URL(origin);
+      const host = url.hostname.toLowerCase();
+      return url.protocol === 'https:' && (
+        host === 'script.google.com' ||
+        host === 'script.googleusercontent.com' ||
+        host.endsWith('.googleusercontent.com')
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  function createRequestToken() {
+    if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+    return `${Date.now()}-${Math.random().toString(36).slice(2)}-${Math.random().toString(36).slice(2)}`;
   }
 
   message.addEventListener('input', () => {
@@ -203,6 +220,9 @@
       return;
     }
 
+    const requestToken = createRequestToken();
+    requestTokenInput.value = requestToken;
+    form.dataset.pendingToken = requestToken;
     form.action = endpoint;
     awaitingResponse = true;
     submitButton.disabled = true;
@@ -220,12 +240,20 @@
   });
 
   window.addEventListener('message', (event) => {
-    if (!awaitingResponse || !isAppsScriptOrigin(event.origin)) return;
+    if (!awaitingResponse) return;
 
-    const data = event.data;
+    let data = event.data;
+    if (typeof data === 'string') {
+      try { data = JSON.parse(data); } catch { return; }
+    }
     if (!data || data.source !== 'abide-support-form') return;
+    // The one-time token is the trust check. Apps Script can respond from dynamic
+    // googleusercontent origins (and, depending on the sandbox, an opaque origin).
+    if (!data.requestToken || data.requestToken !== form.dataset.pendingToken) return;
 
     awaitingResponse = false;
+    form.dataset.pendingToken = '';
+    requestTokenInput.value = '';
     clearTimeout(fallbackTimer);
     restoreButton();
 
