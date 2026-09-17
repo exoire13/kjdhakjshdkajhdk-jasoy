@@ -1,5 +1,48 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Support — Abide</title><meta name="description" content="Get help and support for the Abide Bible app."><link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../assets/styles.css"><script src="../assets/config.js"></script></head>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Support — Abide</title>
+  <meta name="description" content="Contact Abide support for account help, app issues, privacy questions, and community safety concerns.">
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script src="../assets/config.js"></script>
+  <style>
+    .contact-layout{display:grid;grid-template-columns:.88fr 1.12fr;gap:22px;align-items:start;margin-top:34px}
+    .contact-aside,.contact-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px}
+    .contact-aside{background:linear-gradient(180deg,#f8fbfd,#fff)}
+    .contact-aside h2,.contact-card h2{margin:0 0 8px;color:#173754;font-size:22px}
+    .contact-aside>p,.contact-card>p{margin:0;color:#71808d;font-size:14px}
+    .contact-points{display:grid;gap:16px;margin-top:26px}
+    .contact-point{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start}
+    .contact-point-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#edf3f8;color:var(--navy);font-weight:900}
+    .contact-point h3{font-size:14px;margin:1px 0 3px;color:#28465f}
+    .contact-point p{font-size:12px;margin:0;color:#788793}
+    .contact-form{display:grid;gap:17px;margin-top:25px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .form-field{display:grid;gap:7px}
+    .form-field label{font-size:12px;font-weight:800;color:#35516a}
+    .form-field input,.form-field select,.form-field textarea{width:100%;box-sizing:border-box;border:1px solid #dbe3e9;border-radius:13px;background:#fbfcfd;color:#18334e;font:inherit;font-size:14px;padding:12px 13px;outline:none;transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}
+    .form-field input,.form-field select{height:46px}
+    .form-field textarea{min-height:155px;resize:vertical;line-height:1.5}
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:#8eabc2;background:#fff;box-shadow:0 0 0 3px rgba(36,83,124,.08)}
+    .field-help{font-size:11px;color:#8a98a4;margin-top:-1px}
+    .contact-consent{display:flex;align-items:flex-start;gap:9px;color:#6b7d8b;font-size:11px;line-height:1.45}
+    .contact-consent input{margin-top:2px}
+    .contact-consent a{color:#0b2f57;font-weight:750}
+    .contact-submit{display:inline-flex;align-items:center;justify-content:center;width:max-content;min-width:140px;min-height:48px;padding:0 20px;border:0;border-radius:14px;background:var(--navy);color:white;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 10px 26px rgba(11,47,87,.15)}
+    .contact-submit:disabled{opacity:.6;cursor:default}
+    .form-status{display:none;border-radius:13px;padding:12px 14px;font-size:12px;line-height:1.45}
+    .form-status.show{display:block}
+    .form-status.success{background:#eef8f1;border:1px solid #cce7d3;color:#2f6840}
+    .form-status.error{background:#fff4f2;border:1px solid #f0d0c9;color:#824a3f}
+    .direct-email{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:#758492}
+    .direct-email a{font-weight:800;color:#0b2f57}
+    .hp-field{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+    @media(max-width:760px){.contact-layout{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.contact-aside,.contact-card{padding:22px}}
+  </style>
+</head>
 <body>
 <header class="site-header">
   <div class="shell nav">
@@ -13,22 +56,172 @@
       <a class="nav-cta" href="../delete-account/">Delete account</a>
     </nav>
   </div>
-</header><main>
-<section class="legal-hero"><div class="shell"><span class="eyebrow">Help center</span><h1>How can we help?</h1><p>Get help with your account, report a community issue, or contact the Abide team about privacy and app support.</p></div></section>
-<div class="shell legal-wrap">
-<div class="help-grid"><div class="help-card"><div class="feature-icon">◎</div><h3>Account help</h3><p>Login issues, account settings, account deletion, or profile questions.</p></div><div class="help-card"><div class="feature-icon">!</div><h3>Report a problem</h3><p>App bugs, broken features, inappropriate public content, or community safety concerns.</p></div><div class="help-card"><div class="feature-icon">◌</div><h3>Privacy request</h3><p>Questions about your information, privacy choices, or a privacy-related request.</p></div></div>
-<div class="support-box legal-content"><h2>Contact Abide</h2><p>General support: <a data-support-link href="#"><span data-support-email></span></a></p><p>Privacy: <a data-privacy-link href="#"><span data-privacy-email></span></a></p><p>When contacting us, include your Abide username or account email only when necessary to help us identify the account. Never send your password.</p></div>
-<div class="legal-content"><h2>Quick links</h2><p><a href="../privacy/" style="color:#0b2f57;font-weight:700">Privacy Policy</a> · <a href="../terms/" style="color:#0b2f57;font-weight:700">Terms of Service</a> · <a href="../delete-account/" style="color:#0b2f57;font-weight:700">Delete Account</a></p></div></div></main>
+</header>
+<main>
+  <section class="legal-hero"><div class="shell"><span class="eyebrow">Help center</span><h1>How can we help?</h1><p>Send the Abide team a message about your account, a bug, privacy, or community safety. You can reply directly by email after we respond.</p></div></section>
+
+  <div class="shell legal-wrap">
+    <div class="help-grid">
+      <div class="help-card"><div class="feature-icon">◎</div><h3>Account help</h3><p>Login issues, account settings, deletion, subscriptions, or profile questions.</p></div>
+      <div class="help-card"><div class="feature-icon">!</div><h3>Report a problem</h3><p>App bugs, broken features, inappropriate public content, or community safety concerns.</p></div>
+      <div class="help-card"><div class="feature-icon">◌</div><h3>Privacy request</h3><p>Questions about your information, privacy choices, consent, or a data request.</p></div>
+    </div>
+
+    <div class="contact-layout">
+      <aside class="contact-aside">
+        <h2>Contact Abide</h2>
+        <p>Send a message here and it will be delivered to the Abide support inbox.</p>
+        <div class="contact-points">
+          <div class="contact-point"><div class="contact-point-icon">1</div><div><h3>Tell us what happened</h3><p>Pick a topic and give us enough detail to understand the issue.</p></div></div>
+          <div class="contact-point"><div class="contact-point-icon">2</div><div><h3>We receive it by email</h3><p>Your message is also logged in our support sheet so requests do not get lost.</p></div></div>
+          <div class="contact-point"><div class="contact-point-icon">3</div><div><h3>We can reply directly</h3><p>The email you provide is used as the Reply-To address for your support request.</p></div></div>
+        </div>
+        <div class="direct-email">Prefer regular email? <a data-support-link href="../support/"><span data-support-email></span></a></div>
+      </aside>
+
+      <section class="contact-card" aria-labelledby="contact-form-title">
+        <h2 id="contact-form-title">Send a message</h2>
+        <p>Please do not send passwords, payment-card numbers, or other highly sensitive information.</p>
+
+        <form id="support-form" class="contact-form" method="post" target="support-submit-frame" novalidate>
+          <input type="hidden" name="source" value="abidebible.app/support">
+          <div class="hp-field" aria-hidden="true">
+            <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="support-name">Name</label>
+              <input id="support-name" name="name" type="text" maxlength="120" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label for="support-email">Email</label>
+              <input id="support-email" name="email" type="email" maxlength="254" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="support-username">Abide username <span style="font-weight:500;color:#8a98a4">(optional)</span></label>
+              <input id="support-username" name="username" type="text" maxlength="80" autocomplete="off">
+            </div>
+            <div class="form-field">
+              <label for="support-category">Topic</label>
+              <select id="support-category" name="category" required>
+                <option value="" selected disabled>Select a topic</option>
+                <option>Account help</option>
+                <option>Bug or technical issue</option>
+                <option>Subscription or purchase</option>
+                <option>Community or safety</option>
+                <option>Privacy or data request</option>
+                <option>Feedback or suggestion</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="support-subject">Subject</label>
+            <input id="support-subject" name="subject" type="text" maxlength="120" required placeholder="Short description of your request">
+          </div>
+
+          <div class="form-field">
+            <label for="support-message">Message</label>
+            <textarea id="support-message" name="message" maxlength="5000" required placeholder="Tell us what you need help with..."></textarea>
+            <div class="field-help"><span id="message-count">0</span>/5000 characters</div>
+          </div>
+
+          <label class="contact-consent">
+            <input type="checkbox" name="contactConsent" value="yes" required>
+            <span>I understand Abide will use the information in this form to review and respond to my request, as described in the <a href="../privacy/">Privacy Policy</a>.</span>
+          </label>
+
+          <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+          <button id="support-submit" class="contact-submit" type="submit">Send message</button>
+        </form>
+        <iframe name="support-submit-frame" id="support-submit-frame" title="Support form submission" hidden></iframe>
+      </section>
+    </div>
+
+    <div class="legal-content"><h2>Quick links</h2><p><a href="../privacy/" style="color:#0b2f57;font-weight:700">Privacy Policy</a> · <a href="../terms/" style="color:#0b2f57;font-weight:700">Terms of Service</a> · <a href="../delete-account/" style="color:#0b2f57;font-weight:700">Delete Account</a></p></div>
+  </div>
+</main>
+
 <footer class="site-footer">
   <div class="shell">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <a class="brand" href="../"><img src="../assets/abide-logo.png" alt=""><span>Abide</span></a>
-        <p>A Bible app for reading, study, prayer, reflection, and community—built to help Scripture stay close throughout the day.</p>
-      </div>
+      <div class="footer-brand"><a class="brand" href="../"><img src="../assets/abide-logo.png" alt=""><span>Abide</span></a><p>A Bible app for reading, study, prayer, reflection, and community—built to help Scripture stay close throughout the day.</p></div>
       <div class="footer-col"><h4>Legal</h4><a href="../privacy/">Privacy Policy</a><a href="../terms/">Terms of Service</a><a href="../delete-account/">Delete Account</a></div>
       <div class="footer-col"><h4>Help</h4><a href="../support/">Support</a><a data-support-link href="../support/">Contact</a></div>
     </div>
     <div class="footer-bottom"><span>© <span data-year></span> Abide. All rights reserved.</span><span>Made for thoughtful Bible study.</span></div>
   </div>
-</footer><script>document.querySelector('[data-page="support"]')?.classList.add('active');</script><script src="../assets/site.js"></script></body></html>
+</footer>
+
+<script>
+  document.querySelector('[data-page="support"]')?.classList.add('active');
+
+  const form = document.getElementById('support-form');
+  const frame = document.getElementById('support-submit-frame');
+  const submitButton = document.getElementById('support-submit');
+  const statusBox = document.getElementById('form-status');
+  const message = document.getElementById('support-message');
+  const messageCount = document.getElementById('message-count');
+  let submitted = false;
+  let fallbackTimer = null;
+
+  const endpoint = window.ABIDE_CONFIG?.supportFormEndpoint || '';
+
+  function showStatus(kind, text) {
+    statusBox.className = `form-status show ${kind}`;
+    statusBox.textContent = text;
+  }
+
+  message.addEventListener('input', () => {
+    messageCount.textContent = String(message.value.length);
+  });
+
+  form.addEventListener('submit', (event) => {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      form.reportValidity();
+      return;
+    }
+
+    if (!endpoint || endpoint.includes('PASTE_')) {
+      event.preventDefault();
+      showStatus('error', 'The contact form is not connected yet. Please use the support email shown on this page.');
+      return;
+    }
+
+    form.action = endpoint;
+    submitted = true;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending…';
+    statusBox.className = 'form-status';
+    statusBox.textContent = '';
+
+    clearTimeout(fallbackTimer);
+    fallbackTimer = setTimeout(() => {
+      if (!submitted) return;
+      submitted = false;
+      submitButton.disabled = false;
+      submitButton.textContent = 'Send message';
+      showStatus('error', 'The request is taking longer than expected. Please try again, or use the support email shown on this page.');
+    }, 15000);
+  });
+
+  frame.addEventListener('load', () => {
+    if (!submitted) return;
+    submitted = false;
+    clearTimeout(fallbackTimer);
+    form.reset();
+    messageCount.textContent = '0';
+    submitButton.disabled = false;
+    submitButton.textContent = 'Send message';
+    showStatus('success', 'Message sent. Thanks for contacting Abide — we received your support request.');
+  });
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

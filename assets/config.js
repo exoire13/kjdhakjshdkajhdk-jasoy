@@ -6,5 +6,6 @@ window.ABIDE_CONFIG = {
   governingLaw: "Arizona, United States",
   websiteUrl: "abidebible.app",
   appStoreUrl: "",
-  playStoreUrl: ""
+  playStoreUrl: "",
+  supportFormEndpoint: "https://script.google.com/macros/s/AKfycbzkyNhW2Hij28rG9WcCFU-6BvzrZJCxe08MvUsJB8XeREARRA1W8jWjOj4ZWnVuVcbGbA/exec"
 };
