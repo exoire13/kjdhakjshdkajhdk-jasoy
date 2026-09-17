@@ -1,10 +1,10 @@
 // Edit this one file before publishing the website.
 window.ABIDE_CONFIG = {
-  legalName: "REPLACE_WITH_YOUR_LEGAL_NAME",
-  supportEmail: "REPLACE_WITH_YOUR_SUPPORT_EMAIL",
-  privacyEmail: "REPLACE_WITH_YOUR_PRIVACY_EMAIL",
+  legalName: "Bryle Miguel Cabanalan",
+  supportEmail: "bryle.cab01@gmail.com",
+  privacyEmail: "bryle.cab01@gmail.com",
   governingLaw: "Arizona, United States",
-  websiteUrl: "REPLACE_WITH_YOUR_DOMAIN",
+  websiteUrl: "abidebible.app",
   appStoreUrl: "",
   playStoreUrl: ""
 };
