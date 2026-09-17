@@ -162,12 +162,11 @@
   document.querySelector('[data-page="support"]')?.classList.add('active');
 
   const form = document.getElementById('support-form');
-  const frame = document.getElementById('support-submit-frame');
   const submitButton = document.getElementById('support-submit');
   const statusBox = document.getElementById('form-status');
   const message = document.getElementById('support-message');
   const messageCount = document.getElementById('message-count');
-  let submitted = false;
+  let awaitingResponse = false;
   let fallbackTimer = null;
 
   const endpoint = window.ABIDE_CONFIG?.supportFormEndpoint || '';
@@ -175,6 +174,16 @@
   function showStatus(kind, text) {
     statusBox.className = `form-status show ${kind}`;
     statusBox.textContent = text;
+  }
+
+  function restoreButton() {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Send message';
+  }
+
+  function isAppsScriptOrigin(origin) {
+    return origin === 'https://script.google.com' ||
+      origin === 'https://script.googleusercontent.com';
   }
 
   message.addEventListener('input', () => {
@@ -195,7 +204,7 @@
     }
 
     form.action = endpoint;
-    submitted = true;
+    awaitingResponse = true;
     submitButton.disabled = true;
     submitButton.textContent = 'Sending…';
     statusBox.className = 'form-status';
@@ -203,23 +212,41 @@
 
     clearTimeout(fallbackTimer);
     fallbackTimer = setTimeout(() => {
-      if (!submitted) return;
-      submitted = false;
-      submitButton.disabled = false;
-      submitButton.textContent = 'Send message';
-      showStatus('error', 'The request is taking longer than expected. Please try again, or use the support email shown on this page.');
-    }, 15000);
+      if (!awaitingResponse) return;
+      awaitingResponse = false;
+      restoreButton();
+      showStatus('error', 'We could not confirm that your message was sent. Please try again, or use the support email shown on this page.');
+    }, 20000);
   });
 
-  frame.addEventListener('load', () => {
-    if (!submitted) return;
-    submitted = false;
+  window.addEventListener('message', (event) => {
+    if (!awaitingResponse || !isAppsScriptOrigin(event.origin)) return;
+
+    const data = event.data;
+    if (!data || data.source !== 'abide-support-form') return;
+
+    awaitingResponse = false;
     clearTimeout(fallbackTimer);
-    form.reset();
-    messageCount.textContent = '0';
-    submitButton.disabled = false;
-    submitButton.textContent = 'Send message';
-    showStatus('success', 'Message sent. Thanks for contacting Abide — we received your support request.');
+    restoreButton();
+
+    if (data.status === 'ok') {
+      form.reset();
+      messageCount.textContent = '0';
+      showStatus('success', data.message || 'Message sent. Thanks for contacting Abide.');
+      return;
+    }
+
+    if (data.status === 'rate_limited') {
+      showStatus('error', data.message || 'Too many messages were sent recently. Please try again later.');
+      return;
+    }
+
+    if (data.status === 'invalid') {
+      showStatus('error', data.message || 'Please check the form and try again.');
+      return;
+    }
+
+    showStatus('error', data.message || 'We could not send your message. Please try again or use the support email shown on this page.');
   });
 </script>
 <script src="../assets/site.js"></script>
